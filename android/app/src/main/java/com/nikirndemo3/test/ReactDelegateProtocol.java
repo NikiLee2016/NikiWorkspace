@@ -21,11 +21,11 @@ public interface ReactDelegateProtocol {
 
     void onActivityResult(int requestCode, int resultCode, Intent data);
 
-    boolean onKeyDown(int keyCode, KeyEvent event);
+    boolean onReactKeyDown(int keyCode, KeyEvent event);
 
-    boolean onKeyUp(int keyCode, KeyEvent event);
+    boolean onReactKeyUp(int keyCode, KeyEvent event);
 
-    boolean onKeyLongPress(int keyCode, KeyEvent event);
+    boolean onReactKeyLongPress(int keyCode, KeyEvent event);
 
     boolean onBackPressed();
 
@@ -36,7 +36,7 @@ public interface ReactDelegateProtocol {
             int requestCode,
             PermissionListener listener);
 
-    void onRequestPermissionsResult(
+    void onReactRequestPermissionsResult(
             final int requestCode,
             final String[] permissions,
             final int[] grantResults);

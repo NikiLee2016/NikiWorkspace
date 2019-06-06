@@ -63,21 +63,19 @@ public class RNFragment1 extends Fragment implements ReactFragmentDelegateProtoc
         mRnView.onActivityResult(requestCode, resultCode, data);
     }
 
-
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        return mRnView.onKeyDown(keyCode, event);
+        return mRnView.onReactKeyDown(keyCode, event);
     }
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        return mRnView.onKeyUp(keyCode, event);
+        return mRnView.onReactKeyUp(keyCode, event);
     }
 
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        return mRnView.onKeyLongPress(keyCode, event);
+        return mRnView.onReactKeyLongPress(keyCode, event);
     }
 
     @Override
@@ -98,6 +96,6 @@ public class RNFragment1 extends Fragment implements ReactFragmentDelegateProtoc
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        mRnView.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        mRnView.onReactRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
