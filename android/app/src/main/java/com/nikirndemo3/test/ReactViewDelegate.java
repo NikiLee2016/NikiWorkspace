@@ -14,20 +14,27 @@ public class ReactViewDelegate extends ReactActivityDelegate {
 
     private String mComponentName;
     private OnViewInitFinishListener mListener;
+    private Bundle mBundle;
 
     private @Nullable
     ReactRootView mReactRootView;
 
-    public ReactViewDelegate(Activity activity, String componentName) {
+    public ReactViewDelegate(Activity activity, String componentName, Bundle bundle) {
         super(activity, componentName);
         mActivity = activity;
         mComponentName = componentName;
+        mBundle = bundle;
     }
 
     public void setOnViewInitFinishListener(OnViewInitFinishListener listener) {
         mListener = listener;
     }
 
+    @Nullable
+    @Override
+    protected Bundle getLaunchOptions() {
+        return mBundle;
+    }
 
     @Override
     protected void loadApp(String appKey) {
@@ -65,11 +72,6 @@ public class ReactViewDelegate extends ReactActivityDelegate {
     public void onDestroy() {
         super.onDestroy();
     }
-
-
-
-
-
 
     public static interface OnViewInitFinishListener {
         void onInitSuccess(ReactRootView view);

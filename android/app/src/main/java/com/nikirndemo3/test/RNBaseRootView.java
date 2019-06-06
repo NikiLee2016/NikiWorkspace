@@ -20,7 +20,7 @@ public class RNBaseRootView extends FrameLayout implements ReactDelegateProtocol
 
     public RNBaseRootView(@NonNull Activity activity, String moduleName, Bundle bundle) {
         super(activity.getApplicationContext(), null, 0);
-        mDelegate = new ReactViewDelegate(activity, moduleName);
+        mDelegate = new ReactViewDelegate(activity, moduleName, bundle);
         mDelegate.setOnViewInitFinishListener(this);
     }
 
