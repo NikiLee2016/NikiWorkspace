@@ -7,15 +7,28 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, TouchableOpacity, View, PermissionsAndroid, Image, Dimensions} from 'react-native';
+import {
+    Platform,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    PermissionsAndroid,
+    Image,
+    Dimensions,
+    TextInput,
+    NativeModules, ScrollView, Keyboard
+} from 'react-native';
 import PropTypes from "prop-types";
 import SyanImagePicker from 'react-native-syan-image-picker';
+
+const {JumpModule} = NativeModules;
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
     android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
+        'Double tap R on your keyboard to reload,\n' +
+        'Shake or press menu button for dev menu',
 });
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
@@ -52,12 +65,25 @@ export default class App extends Component<Props> {
                     }}
                     text={'test syan picker'}
                 />
-                <Image style={{width: screenWidth, height: 600, resizeMode: 'contain'}} source={this.state.imagePath}/>
+                {/*<Image style={{width: screenWidth, height: 600, resizeMode: 'contain'}} source={this.state.imagePath}/>*/}
+                {/*<TextInput
+                    style={{marginTop: 20, height: 60, backgroundColor: '#0f0'}}
+                    onChangeText={text => console.warn(text)}/>*/}
+                <BlueButton onPress={() => {
+                    JumpModule.jump();
+                }
+                }/>
+                    <ScrollView
+                        onScroll={(event) => console.warn(event.nativeEvent.contentOffset)}
+                        style={{flex: 1, backgroundColor: '#f00'}}>
+                        <View style={{height: 1000}}/>
+                    </ScrollView>
+
             </View>
         );
     }
 
-    componentDidMount(){
+    componentDidMount() {
         PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE, '')
             .then((result) => {
             });
@@ -70,7 +96,7 @@ export default class App extends Component<Props> {
 
 export const BlueButton = (p) => {
     const {text, onPress} = p;
-    return ( <TouchableOpacity
+    return (<TouchableOpacity
         onPress={onPress}
         style={{backgroundColor: '#66abfa', paddingVertical: 5, paddingHorizontal: 10, marginTop: 10}}
     >

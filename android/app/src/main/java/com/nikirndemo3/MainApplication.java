@@ -3,6 +3,9 @@ package com.nikirndemo3;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.brentvatne.react.ReactVideoPackage;
+import com.nikirndemo3.edittext.LYReactTextInputPackage;
+import com.nikirndemo3.test.jump.JumpActivityPackage;
 import com.reactlibrary.RNSyanImagePickerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -24,7 +27,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNSyanImagePickerPackage()
+            new ReactVideoPackage(),
+            new RNSyanImagePickerPackage(),
+              new JumpActivityPackage(),
+              new LYReactTextInputPackage()
       );
     }
 

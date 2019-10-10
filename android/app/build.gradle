@@ -55,6 +55,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-video')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-v4:27.1.1'
     compile project(':react-native-syan-image-picker')
